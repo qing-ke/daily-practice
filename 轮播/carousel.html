@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="list" style="height: 200px;width: 300px;overflow: hidden;">
+  <img src="1.jpg" alt="1" class="pic"/>
+  <img src="2.jpg" alt="2" class="pic" style="display: none"/>
+  <img src="3.jpg" alt="3" class="pic" style="display: none"/>
+</div>
+<script>
+  window.onload=function () {
+    let flag = 0;
+    let ele = document.getElementsByClassName("pic")
+    let len = ele.length;
+    let s = setInterval(function () {
+      flag ++;
+      if(flag === len){
+        flag = 0;
+      }
+      for(var i=0;i<len; i++){
+        if (i === flag) {
+          ele[i].style.display = '';
+        } else {
+          ele[i].style.display = 'none';
+        }
+      }
+    },2000);
+    document.getElementById("list").onmouseover =function () {
+      window.clearInterval(s);
+    };
+    document.getElementById("list").onmouseout =function () {
+      s = setInterval(function () {
+        flag ++;
+        if(flag === len){
+          flag = 0;
+        }
+        for(var i=0;i<len; i++){
+          if (i === flag) {
+            ele[i].style.display = '';
+          } else {
+            ele[i].style.display = 'none';
+          }
+        }
+      },2000);
+    }
+  }
+</script>
+</body>
+</html>
